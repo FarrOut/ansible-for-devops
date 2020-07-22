@@ -1,0 +1,3 @@
+
+- name: Include installation tasks
+  include: install.yaml

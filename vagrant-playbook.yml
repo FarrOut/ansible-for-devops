@@ -1,0 +1,14 @@
+---
+  - hosts: wg-server
+    become: yes
+
+    tasks:
+    - import_role:
+        name: wireguard-server
+
+  - hosts: peer-one
+    become: yes
+
+    tasks:
+    - import_role:
+        name: wireguard-peer

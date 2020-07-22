@@ -1,0 +1,19 @@
+---
+# Deploy a customized aJourney stack to a clustered layout.
+
+- name:           Deploy the Wireguard server for the personal VLAN.
+  hosts:          servers
+  connection:     local
+  become:         yes
+  become_method:  sudo
+
+  roles:
+  - wireguard-server
+
+- name:           Deploy the Wireguard peers for the personal VLAN.
+  hosts:          peers
+  become:         yes
+  become_method:  sudo
+
+  roles:
+  - wireguard-peer

@@ -1,0 +1,15 @@
+- name: ensure a list of prerequisite packages are installed
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - elrepo-release
+    - epel-release
+
+- name: install Wireguard and tools
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - kmod-wireguard
+    - wireguard-tools
