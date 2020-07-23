@@ -1,15 +1,5 @@
-- name: ensure a list of prerequisite packages are installed
-  yum:
-    name: "{{ packages }}"
-  vars:
-    packages:
-    - elrepo-release
-    - epel-release
+- name: Install docker-compose
+  shell: curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
-- name: install Wireguard and tools
-  yum:
-    name: "{{ packages }}"
-  vars:
-    packages:
-    - kmod-wireguard
-    - wireguard-tools
+- name: Apply executable permissions to the binary.
+  shell: chmod +x /usr/local/bin/docker-compose

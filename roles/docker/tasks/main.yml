@@ -1,3 +1,0 @@
-
-- name: Include docker-compose
-  include: install-docker-compose.yaml

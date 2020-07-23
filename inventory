@@ -1,5 +1,0 @@
-[servers]
-primary=127.0.0.1
-
-[clients]
-pi4=192.168.0.102

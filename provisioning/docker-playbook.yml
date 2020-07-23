@@ -1,0 +1,10 @@
+---
+# Deploy Docker to the target.
+
+- name:           Deploy Docker.
+  hosts:          all  
+  become:         yes
+  become_method:  sudo
+
+  roles:
+  - docker

@@ -1,0 +1,8 @@
+- name: Install Docker components
+  apt:
+    pkg:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    state: latest
+    update_cache: yes
