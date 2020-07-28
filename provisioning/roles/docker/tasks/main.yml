@@ -1,5 +1,5 @@
 - name: Include Docker
-  include: install-docker
+  include: install-docker.yaml
 
 - name: Include docker-compose
   include: install-docker-compose.yaml
