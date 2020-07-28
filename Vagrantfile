@@ -12,7 +12,13 @@ Vagrant.configure(2) do |config|
   config.vm.provision "ansible" do |ansible|
     ansible.compatibility_mode = "auto"
     ansible.verbose = true
+
+    # Call the default playbook.
     ansible.playbook = "provisioning/site.yml"
+
+    # Optionally filter tags (string or array of strings)
+    ansible.tags = ["nodejs"]
+
 
     # default password for vagrant boxes to allow sudo priviledges
     ansible.extra_vars = {
