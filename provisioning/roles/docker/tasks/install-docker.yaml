@@ -1,8 +1,7 @@
-- name: Install Docker components
+- name: Install pre-requisites
   apt:
     pkg:
-    - docker-ce
-    - docker-ce-cli
-    - containerd.io
-    state: latest
-    update_cache: yes
+      - curl
+
+- name: Install Docker components
+  shell: 'curl -sSL https://get.docker.com | sh'
