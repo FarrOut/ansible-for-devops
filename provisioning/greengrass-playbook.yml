@@ -1,0 +1,10 @@
+---
+# Deploy Docker to the target.
+
+- name:           Install pre-requisites.
+  hosts:          all
+  become:         yes
+  become_method:  sudo
+
+  roles:
+  - nodejs
