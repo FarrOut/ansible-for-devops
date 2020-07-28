@@ -14,8 +14,9 @@ Vagrant.configure(2) do |config|
     ansible.verbose = true
     ansible.playbook = "provisioning/site.yml"
 
+    # default password for vagrant boxes to allow sudo priviledges
     ansible.extra_vars = {
-      ansible_sudo_pass: "vagrant"      
+      ansible_sudo_pass: "vagrant"
     }
   end
 
