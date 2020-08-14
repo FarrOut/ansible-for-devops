@@ -1,0 +1,4 @@
+- name: Include NodeJS
+  include: install.yaml
+  tags:
+  - nodejs

@@ -1,3 +1,4 @@
 ---
 - import_playbook: docker-playbook.yml
+- import_playbook: greengrass-playbook.yml
 # - import_playbook: wireguard-vlan-playbook.yml

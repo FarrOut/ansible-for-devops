@@ -1,0 +1,15 @@
+- name: create temporary working directory
+  file:
+    path: /tmp/ansible
+    state: directory
+
+- name: Download nodejs installers
+  get_url:
+    url: https://nodejs.org/dist/v12.18.3/node-v12.18.3-linux-armv7l.tar.xz
+    dest: /tmp/ansible/node-v12.18.3-linux-armv7l.tar.xz
+    checksum: sha256:d399268a181b9eb5d3ce3ed142e7d41ea72d65953fe8cc064bb7f22240e8ae58
+
+- name: delete temporary working directory
+  file:
+    path: /tmp/ansible
+    state: absent

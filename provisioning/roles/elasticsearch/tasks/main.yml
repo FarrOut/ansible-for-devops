@@ -1,0 +1,10 @@
+- name: Install pre-requisites
+  apt:
+    pkg:
+      - wget
+
+- name: Include Metic Beat
+  include: install-metric-beat.yaml
+  tags:
+  - metric
+  - beat
