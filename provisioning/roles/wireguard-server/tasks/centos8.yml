@@ -21,3 +21,6 @@
     path: /etc/wireguard
     state: directory
     mode: '0755'
+
+- name: Generate public key
+  shell: 'wg genkey | sudo tee /etc/wireguard/privatekey | wg pubkey | sudo tee /etc/wireguard/publickey'
