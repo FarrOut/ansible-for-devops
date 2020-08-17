@@ -1,0 +1,24 @@
+
+- name: Install Heartbeat package
+  apt:
+    pkg:
+      - heartbeat-elastic
+    update_cache: yes
+
+- name: Template heartbeat configuration file
+  template:
+    src: heartbeat.yml.j2
+    dest: /etc/heartbeat/heartbeat.yml
+    backup: yes
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Run heartbeat setup
+  shell: 'heartbeat setup'
+
+- name: Enable Heartbeat service
+  systemd:
+    state: started
+    name: heartbeat-elastic
+    enabled: yes

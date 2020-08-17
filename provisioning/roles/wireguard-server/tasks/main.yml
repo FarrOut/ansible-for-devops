@@ -1,3 +1,10 @@
 
 - name: Include installation tasks
-  include: install.yaml
+  include: install.yml
+  tags:
+    - wireguard
+
+- name: Include configuration tasks
+  include: configure.yml
+  tags:
+    - wireguard

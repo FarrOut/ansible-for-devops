@@ -1,10 +1,32 @@
-- name: Install pre-requisites
+- name: Install prerequisites
   apt:
     pkg:
+      - apt-transport-https
       - wget
 
-- name: Include Metic Beat
-  include: install-metric-beat.yaml
+- name: Download and install the Public Signing Key
+  apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+
+- name: Save repository definition
+  shell: 'echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list'
+
+- name: Include Metric Beat
+  include: install-metricbeat.yaml
   tags:
   - metric
+  - beat
+
+- name: Include UpTime Beat
+  include: install-heartbeat.yaml
+  tags:
+  - uptime
+  - beat
+
+- name: Include Filebeat
+  include: install-filebeat.yaml
+  tags:
+  - file
+  - logs
   - beat
