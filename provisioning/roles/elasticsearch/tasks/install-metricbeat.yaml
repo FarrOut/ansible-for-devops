@@ -1,0 +1,25 @@
+- name: Install Metric Beat package
+  apt:
+    pkg:
+      - metricbeat
+    update_cache: yes
+
+- name: Template configuration file
+  template:
+    src: metricbeat.yml.j2
+    dest: /etc/metricbeat/metricbeat.yml
+    backup: yes
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Enable metricbeat service
+  systemd:
+    state: started
+    name: metricbeat
+    enabled: yes
+
+- name: Enable system module for metricbeat
+  shell: 'metricbeat modules enable system'
+  tags:
+  - system

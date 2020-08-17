@@ -1,0 +1,28 @@
+- name: Install filebeat package
+  apt:
+    pkg:
+      - filebeat
+    update_cache: yes
+
+- name: Template configuration file for filebeat
+  template:
+    src: filebeat.yml.j2
+    dest: /etc/filebeat/filebeat.yml
+    backup: yes
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Enable system module for filebeat
+  shell: 'filebeat modules enable system'
+  tags:
+  - system
+
+- name: Run filebeat setup
+  shell: 'filebeat setup'
+
+- name: Enable filebeat service
+  systemd:
+    state: started
+    name: filebeat
+    enabled: yes
